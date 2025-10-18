@@ -1,0 +1,30 @@
+import pygame
+
+# Pygame 초기화
+pygame.init()
+
+# 화면 설정
+background = pygame.display.set_mode((480, 360))
+pygame.display.set_caption('PYGAME_2')
+
+# 시작 위치 설정
+x_pos = 0
+y_pos = 0
+
+# 프로그램 실행 여부를 결정하는 변수
+play = True
+
+while play:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            play = False
+        if event.type == pygame.MOUSEMOTION:
+            x_pos, y_pos = pygame.mouse.get_pos()
+            pygame.draw.circle(background, (173,216,230), (x_pos, y_pos), 10)
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:  # 왼쪽 버튼 클릭 시
+                background.fill((0,0,0))  # 배경을 검정색으로 채우기
+
+    pygame.display.update()
+
+pygame.quit() #게임 종료
